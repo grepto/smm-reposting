@@ -1,20 +1,19 @@
-import os
-
 import requests
-from dotenv import load_dotenv
+import configparser
 import vk_api
 import telegram
 
-load_dotenv()
-TG_TOKEN = os.getenv('TG_TOKEN')
-TG_CHAT_ID = os.getenv('TG_CHAT_ID')
-VK_LOGIN = os.getenv('VK_LOGIN')
-VK_TOKEN = os.getenv('VK_TOKEN')
-VK_GROUP_ID = os.getenv('VK_GROUP_ID')
-VK_ALBUM_ID = os.getenv('VK_ALBUM_ID')
-FB_TOKEN = os.getenv('FB_TOKEN')
-FB_GROUP_ID = os.getenv('FB_GROUP_ID')
-FB_URL = os.getenv('FB_URL')
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+TG_TOKEN = config['Telegram']['TOKEN']
+TG_CHAT_ID = config['Telegram']['CHAT_ID']
+VK_LOGIN = config['Vkontakte']['LOGIN']
+VK_TOKEN = config['Vkontakte']['TOKEN']
+VK_GROUP_ID = config['Vkontakte']['GROUP_ID']
+VK_ALBUM_ID = config['Vkontakte']['ALBUM_ID']
+FB_TOKEN = config['Facebook']['TOKEN']
+FB_GROUP_ID = config['Facebook']['GROUP_ID']
 FB_URL = 'https://graph.facebook.com'
 
 
@@ -82,10 +81,10 @@ def post_facebook(message, image_path=None):
 def post(message=None, image_path=None):
     post_facebook(message, image_path)
     post_vkontakte(message, image_path)
-    post_telegram(message, image_path)
+    # post_telegram(message, image_path)
 
 
 if __name__ == '__main__':
-    message = 'Проверка кросспостинга'
+    message = 'Проверка кросспостинга~2'
     image_path = '999.jpg'
     post(message, image_path)

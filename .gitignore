@@ -1,5 +1,6 @@
 #Project
 *.jpg
+config.ini
 
 #IDE
 .idea/
