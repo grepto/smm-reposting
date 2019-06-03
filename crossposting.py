@@ -1,19 +1,17 @@
 import requests
-import configparser
+import os
 import vk_api
 import telegram
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+VK_TOKEN = os.getenv('VK_TOKEN')
+VK_GROUP_ID = os.getenv('VK_GROUP_ID')
+VK_LOGIN = os.getenv('VK_LOGIN')
+VK_ALBUM_ID = os.getenv('VK_ALBUM_ID')
+TG_TOKEN = os.getenv('TG_TOKEN')
+TG_CHAT_ID = os.getenv('TG_CHAT_ID')
+FB_TOKEN = os.getenv('FB_TOKEN')
+FB_GROUP_ID = os.getenv('FB_GROUP_ID')
 
-TG_TOKEN = config['Telegram']['TOKEN']
-TG_CHAT_ID = config['Telegram']['CHAT_ID']
-VK_LOGIN = config['Vkontakte']['LOGIN']
-VK_TOKEN = config['Vkontakte']['TOKEN']
-VK_GROUP_ID = config['Vkontakte']['GROUP_ID']
-VK_ALBUM_ID = config['Vkontakte']['ALBUM_ID']
-FB_TOKEN = config['Facebook']['TOKEN']
-FB_GROUP_ID = config['Facebook']['GROUP_ID']
 FB_URL = 'https://graph.facebook.com'
 
 
