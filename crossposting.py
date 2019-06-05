@@ -2,6 +2,7 @@ import requests
 import os
 import vk_api
 import telegram
+import argparse
 
 VK_TOKEN = os.getenv('VK_TOKEN')
 VK_GROUP_ID = os.getenv('VK_GROUP_ID')
@@ -13,7 +14,6 @@ FB_TOKEN = os.getenv('FB_TOKEN')
 FB_GROUP_ID = os.getenv('FB_GROUP_ID')
 
 FB_URL = 'https://graph.facebook.com'
-
 
 def upload_photo_vkontakte(image_path):
     vk_session = vk_api.VkApi(login=VK_LOGIN, token=VK_TOKEN)
@@ -83,6 +83,14 @@ def post(message=None, image_path=None):
 
 
 if __name__ == '__main__':
-    message = 'Проверка кросспостинга~2'
-    image_path = '999.jpg'
-    post(message, image_path)
+    parser = argparse.ArgumentParser(description='Crossposting to Vkontakte, Telegram and Facebook')
+    parser.add_argument('message', type=str,
+                        help='string of message')
+    parser.add_argument('image_path', type=str,
+                        help='path to image file')
+
+    args = parser.parse_args()
+    message = args.message
+    image_path = args.image_path
+    # post(message, image_path)
+    print(message,image_path)
