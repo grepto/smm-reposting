@@ -79,7 +79,7 @@ def post_facebook(message, image_path=None):
 def post(message=None, image_path=None):
     post_facebook(message, image_path)
     post_vkontakte(message, image_path)
-    # post_telegram(message, image_path)
+    post_telegram(message, image_path)
 
 
 if __name__ == '__main__':
@@ -92,5 +92,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     message = args.message
     image_path = args.image_path
-    # post(message, image_path)
-    print(message,image_path)
+    post(message, image_path)
